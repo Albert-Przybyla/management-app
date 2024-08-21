@@ -3,10 +3,12 @@ import express from "express";
 import http from "http";
 import bodyParser from "body-parser";
 import connectDB from "./config/db";
+import router from "./routes/router";
+import swaggerDocs from "./config/swaggier";
 
 config({ path: `.env` });
 
-const PORT = process.env.PORT || 8080;
+const PORT = +process.env.PORT || 8080;
 
 connectDB();
 
@@ -17,8 +19,7 @@ const server = http.createServer(app);
 
 server.listen(PORT, () => {
   console.log(`server running on ${PORT}`);
+  swaggerDocs(app, PORT);
 });
 
-app.use("/", () => {
-  console.log("hi");
-});
+app.use("/", router());

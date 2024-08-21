@@ -58,7 +58,7 @@ userSchema.virtual("fullName").get(function (this: UserDocument) {
   return `${this.firstName} ${this.lastName}`;
 });
 
-userSchema.pre("save", async function (next) {
+userSchema.pre("save", async function (this: UserDocument, next) {
   if (!this.isModified("password")) {
     return next();
   }

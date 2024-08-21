@@ -17,6 +17,26 @@ const organizationSchema = new mongoose.Schema({
     type: Date,
     required: true,
   },
+  country: {
+    type: String,
+    required: false,
+  },
+  city: {
+    type: String,
+    required: false,
+  },
+  address: {
+    type: String,
+    required: false,
+  },
+  zipcode: {
+    type: String,
+    required: false,
+  },
+  logo: {
+    type: String,
+    required: false,
+  },
 });
 
 export default mongoose.model("Organization", organizationSchema);
