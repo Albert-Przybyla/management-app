@@ -7,10 +7,6 @@ const organizationSchema = new mongoose.Schema({
     unique: true,
     trim: true,
   },
-  description: {
-    type: String,
-    trim: true,
-  },
   users: [
     {
       type: mongoose.Schema.Types.ObjectId,
@@ -23,5 +19,4 @@ const organizationSchema = new mongoose.Schema({
   },
 });
 
-const Organization = mongoose.model("Organization", organizationSchema);
-module.exports = Organization;
+export default mongoose.model("Organization", organizationSchema);
