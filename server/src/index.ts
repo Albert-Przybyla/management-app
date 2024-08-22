@@ -10,8 +10,6 @@ config({ path: `.env` });
 
 const PORT = +process.env.PORT || 8080;
 
-connectDB();
-
 const app = express();
 app.use(bodyParser.json());
 
@@ -19,6 +17,7 @@ const server = http.createServer(app);
 
 server.listen(PORT, () => {
   console.log(`server running on ${PORT}`);
+  connectDB();
   swaggerDocs(app, PORT);
 });
 

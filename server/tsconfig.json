@@ -8,12 +8,14 @@
     "noImplicitAny": true,
     "strictPropertyInitialization": false,
     "useDefineForClassFields": false,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
     "target": "ES2022",
     "lib": ["ES2022"],
     "esModuleInterop": true,
     "skipLibCheck": true,
     "outDir": "dist"
   },
-  "include": ["src/**/*"],
+  "include": ["src/**/*", "seed.ts"],
   "exclude": ["node_modules/**/*"]
 }

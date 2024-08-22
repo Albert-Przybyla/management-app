@@ -1,0 +1,73 @@
+import { IsEmail, IsEnum, IsNotEmpty, IsString, Length } from "class-validator";
+import { UserRole } from "enums/userRole.enum";
+export class CreateUserDto {
+  @IsNotEmpty()
+  @IsString()
+  @Length(2, 30)
+  firstName: string;
+
+  @IsNotEmpty()
+  @IsString()
+  @Length(2, 30)
+  lastName: string;
+
+  @IsNotEmpty()
+  @IsEmail()
+  email: string;
+
+  @IsNotEmpty()
+  @IsString()
+  @Length(8, 100)
+  password: string;
+
+  @IsNotEmpty()
+  @IsEnum(UserRole)
+  role: UserRole;
+}
+
+/**
+ * @swagger
+ * components:
+ *   schemas:
+ *     CreateUserDto:
+ *       type: object
+ *       required:
+ *         - firstName
+ *         - lastName
+ *         - email
+ *         - password
+ *         - role
+ *       properties:
+ *         firstName:
+ *           type: string
+ *           description: The first name of the user.
+ *           example: Jan
+ *           minLength: 2
+ *           maxLength: 30
+ *         lastName:
+ *           type: string
+ *           description: The last name of the user.
+ *           example: Kowalski
+ *           minLength: 2
+ *           maxLength: 30
+ *         email:
+ *           type: string
+ *           format: email
+ *           description: The user's email address.
+ *           example: jan.kowalski@example.com
+ *         password:
+ *           type: string
+ *           description: The user's password.
+ *           minLength: 8
+ *           maxLength: 100
+ *           example: password123
+ *         role:
+ *           type: string
+ *           description: The user's role.
+ *           enum:
+ *             - admin
+ *             - owner
+ *             - manager
+ *             - user
+ *           example: user
+ */

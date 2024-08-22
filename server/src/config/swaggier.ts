@@ -7,7 +7,7 @@ const oprions: swaggerJSDoc.Options = {
   definition: {
     openapi: "3.0.0",
     info: {
-      title: "Calendar App",
+      title: "Management app",
       description: "Nice app",
       contact: {
         name: "Albert Przybyła",
@@ -30,12 +30,12 @@ const oprions: swaggerJSDoc.Options = {
       },
     ],
   },
-  apis: ["./src/routes/router.ts", "./src/models/*.ts"],
+  apis: ["./src/routes/router.ts", "./src/dtos/**/*.ts", "./src/enums/*.ts"],
 };
 
 const swaggerSpec = swaggerJSDoc(oprions);
 
-function swaggerDocs(app: Express, port: number) {
+const swaggerDocs = async (app: Express, port: number) => {
   app.use("/docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
   app.get("/docs.json", (req: Request, res: Response) => {
@@ -44,6 +44,6 @@ function swaggerDocs(app: Express, port: number) {
   });
 
   // logger
-}
+};
 
 export default swaggerDocs;

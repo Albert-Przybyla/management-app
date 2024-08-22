@@ -1,0 +1,21 @@
+{
+  "entryFile": "./src/index.ts",
+  "noImplicitAdditionalProperties": "throw-on-extras",
+  "controllerPathGlobs": ["./src/controllers/**/*Controller.ts"],
+  "spec": {
+    "outputDirectory": "./src",
+    "specFileName": "swagger.json",
+    "host": "localhost:3000",
+    "basePath": "/api",
+    "securityDefinitions": {
+      "bearerAuth": {
+        "type": "apiKey",
+        "name": "Authorization",
+        "in": "header"
+      }
+    }
+  },
+  "routes": {
+    "routesDir": "./src/routes"
+  }
+}
