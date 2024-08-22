@@ -1,9 +1,10 @@
-import express from "express";
-import userRouter from "./user.router";
+import { Router } from "express";
+import adminRouter from "./adminRouter";
+import userRouter from "./userRouter";
 
-const router = express.Router();
+const router = Router();
 
-export default (): express.Router => {
-  userRouter(router);
-  return router;
-};
+router.use("/admin", adminRouter);
+router.use("/user", userRouter);
+
+export default router;

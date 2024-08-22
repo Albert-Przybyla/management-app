@@ -21,4 +21,4 @@ server.listen(PORT, () => {
   swaggerDocs(app, PORT);
 });
 
-app.use("/", router());
+app.use("/", router);
