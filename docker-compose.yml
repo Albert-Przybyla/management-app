@@ -9,9 +9,9 @@ services:
     environment:
       MONGO_INITDB_ROOT_USERNAME: root
       MONGO_INITDB_ROOT_PASSWORD: password
+      TZ: Europe/Warsaw
     volumes:
       - ./db_data/:/data/db/
-      - /etc/timezone:/etc/timezone:pl
 
   mongo-express:
     image: mongo-express
@@ -31,8 +31,8 @@ services:
     restart: unless-stopped
     tty: true
     environment:
-      - "MINIO_ROOT_USER=admin"
-      - "MINIO_ROOT_PASSWORD=admin"
+      - "MINIO_ROOT_USER=root"
+      - "MINIO_ROOT_PASSWORD=password"
       - "MINIO_DEFAULT_BUCKETS=img-cache:none,84ccbbab-e7ca-46f9-ae3e-d8f1e3939660:none,"
       - "MINIO_BROWSER=on"
       - "CONSOLE_SECURE_TLS_REDIRECT=off"
