@@ -10,7 +10,7 @@ export interface OrganizationInput {
   logo: string;
 }
 
-export interface UserDocument extends OrganizationInput, mongoose.Document {
+export interface OrganizationDocument extends OrganizationInput, mongoose.Document {
   createdAt: Date;
   updatedAt: Date;
 }

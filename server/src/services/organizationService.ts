@@ -1,7 +1,12 @@
 import mongoose from "mongoose";
-import organizationSchema from "../schemas/organization.schema";
+import organizationSchema, { OrganizationInput } from "../schemas/organization.schema";
 
 const OrganizationService = {
+  async createOrganization(OrganizationInput: OrganizationInput): Promise<any> {
+    const organization = await organizationSchema.create(OrganizationInput);
+    return organization;
+  },
+
   async addUserToOrganization(organizationId: string, userId: string) {
     const organization = await organizationSchema.findById(organizationId);
     if (!organization) {
