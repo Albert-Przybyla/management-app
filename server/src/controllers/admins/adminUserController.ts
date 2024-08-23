@@ -1,8 +1,9 @@
 import { NextFunction, Request, Response } from "express";
 import { plainToInstance } from "class-transformer";
 import { validateOrReject } from "class-validator";
-import UserController from "../../services/user.service";
+import UserController from "../../services/userService";
 import { CreateUserDto } from "../../dtos/user/userCreate.dto";
+import OrganizationService from "../../services/organizationService";
 
 /**
  * @swagger
@@ -37,6 +38,8 @@ export const createUser = async (req: Request, res: Response, next: NextFunction
     const createUserDto = plainToInstance(CreateUserDto, req.body);
     await validateOrReject(createUserDto);
     const user = await UserController.createUser(createUserDto);
+
+    await OrganizationService.addUserToOrganization(createUserDto.organization, String(user._id));
 
     return res.status(200).json(user).end();
   } catch (err) {

@@ -1,7 +1,7 @@
 require("module-alias/register");
 
 import connectDB from "./config/db";
-import organizationModel from "./schemas/organization.model";
+import organizationModel from "./schemas/organization.schema";
 import userSchema from "./schemas/user.schema";
 import { config } from "dotenv";
 
