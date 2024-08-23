@@ -1,5 +1,6 @@
-import { IsEmail, IsEnum, IsNotEmpty, IsString, Length } from "class-validator";
-import { UserRole } from "enums/userRole.enum";
+import { IsEmail, IsEnum, IsNotEmpty, IsString, Length, IsUUID } from "class-validator";
+import { UserRole } from "../../enums/userRole.enum";
+import { IsObjectId } from "../../decorators/isObjectId.decorator";
 export class CreateUserDto {
   @IsNotEmpty()
   @IsString()
@@ -23,6 +24,10 @@ export class CreateUserDto {
   @IsNotEmpty()
   @IsEnum(UserRole)
   role: UserRole;
+
+  @IsNotEmpty()
+  @IsObjectId({ message: "Invalid organization ID" })
+  organization: string;
 }
 
 /**
@@ -70,4 +75,9 @@ export class CreateUserDto {
  *             - manager
  *             - user
  *           example: user
+ *         organization:
+ *           type: string
+ *           format: uuid
+ *           description: The ID of the organization to which the user belongs.
+ *           example: 66c7becd5073848146472857
  */

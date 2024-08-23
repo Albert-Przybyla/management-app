@@ -30,7 +30,7 @@ const oprions: swaggerJSDoc.Options = {
       },
     ],
   },
-  apis: ["./src/routes/router.ts", "./src/dtos/**/*.ts", "./src/enums/*.ts"],
+  apis: ["./src/controllers/**/*.ts", "./src/dtos/**/*.ts", "./src/enums/*.ts"],
 };
 
 const swaggerSpec = swaggerJSDoc(oprions);
