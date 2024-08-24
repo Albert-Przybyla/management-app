@@ -1,12 +1,9 @@
 import { Router } from "express";
-import userRouter from "./users/user.router";
 
 const userBaseRouter = Router();
 
 userBaseRouter.get("/", (req, res) => {
-  res.send("User Home");
+  res.send("user user home");
 });
-
-userBaseRouter.use("/user", userRouter);
 
 export default userBaseRouter;

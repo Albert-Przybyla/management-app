@@ -1,6 +1,6 @@
 import { Router } from "express";
-import userRouter from "./admins/user.router";
-import organizationRouter from "./admins/organization.router";
+import userRouter from "./user.router";
+import organizationRouter from "./organization.router";
 
 const adminBaseRouter = Router();
 

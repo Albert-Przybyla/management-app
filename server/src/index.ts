@@ -2,9 +2,11 @@ import { config } from "dotenv";
 import express, { Request, Response, NextFunction } from "express";
 import http from "http";
 import connectDB from "./config/db";
-import swaggerDocs from "./config/swagger";
-import router from "./routes/router";
+import swaggerAdminDocs from "./config/swaggerAdmin";
+import swaggerUserDocs from "./config/swaggerUser";
 import { validationErrorHandler } from "./middlewares/validationErrorHandler";
+import userBaseRouter from "./admin/routes/user.router";
+import adminBaseRouter from "./admin/routes/adminRoutes";
 
 config({ path: `.env` });
 
@@ -14,7 +16,8 @@ const app = express();
 
 app.use(express.json());
 
-app.use("/", router);
+app.use("/admin", adminBaseRouter);
+app.use("/user", userBaseRouter);
 
 app.use(validationErrorHandler);
 
@@ -29,7 +32,8 @@ const server = http.createServer(app);
 
 connectDB()
   .then(() => {
-    swaggerDocs(app, PORT);
+    swaggerAdminDocs(app, PORT);
+    swaggerUserDocs(app, PORT);
     server.listen(PORT, () => {
       console.log(`Server running on port ${PORT}`);
     });

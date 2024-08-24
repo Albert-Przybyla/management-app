@@ -15,6 +15,12 @@ const oprions: swaggerJSDoc.Options = {
       },
       version,
     },
+    servers: [
+      {
+        url: "http://localhost:8080/admin",
+        description: "Serwer administratora",
+      },
+    ],
     components: {
       securitySchemes: {
         bearerAuth: {
@@ -30,15 +36,15 @@ const oprions: swaggerJSDoc.Options = {
       },
     ],
   },
-  apis: ["./src/controllers/**/*.ts", "./src/dtos/**/*.ts", "./src/enums/*.ts"],
+  apis: ["./src/admin/controllers/**/*.ts", "./src/dtos/**/*.ts", "./src/enums/*.ts"],
 };
 
 const swaggerSpec = swaggerJSDoc(oprions);
 
-const swaggerDocs = async (app: Express, port: number) => {
-  app.use("/docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
+const swaggerAdminDocs = async (app: Express, port: number) => {
+  app.use("/admin/docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
-  app.get("/docs.json", (req: Request, res: Response) => {
+  app.get("/admin/docs.json", (req: Request, res: Response) => {
     res.setHeader("Content-Type", "application/json");
     res.send(swaggerSpec);
   });
@@ -46,4 +52,4 @@ const swaggerDocs = async (app: Express, port: number) => {
   // logger
 };
 
-export default swaggerDocs;
+export default swaggerAdminDocs;

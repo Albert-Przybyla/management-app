@@ -1,4 +1,4 @@
-import { createOrganization } from "../../controllers/admins/adminOrganizationController";
+import { createOrganization } from "../../admin/controllers/adminOrganizationController";
 import { Router } from "express";
 
 const organizationRouter = Router();
