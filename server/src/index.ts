@@ -7,7 +7,7 @@ import swaggerUserDocs from "./config/swaggerUser";
 import { validationErrorHandler } from "./middlewares/validationErrorHandler";
 import userBaseRouter from "./admin/routes/user.router";
 import adminBaseRouter from "./admin/routes/adminRoutes";
-import publicBaseRouter from "./public/routes/publicRoutes";
+import publicBaseRouter from "./shared/routes/publicRoutes";
 
 config({ path: `.env` });
 
@@ -34,8 +34,8 @@ const server = http.createServer(app);
 
 connectDB()
   .then(() => {
+    // swaggerUserDocs(app, PORT);
     swaggerAdminDocs(app, PORT);
-    swaggerUserDocs(app, PORT);
     server.listen(PORT, () => {
       console.log(`Server running on port ${PORT}`);
     });

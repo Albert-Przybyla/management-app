@@ -7,7 +7,7 @@ const oprions: swaggerJSDoc.Options = {
   definition: {
     openapi: "3.0.0",
     info: {
-      title: "Management app",
+      title: "Management admin app",
       description: "Nice app",
       contact: {
         name: "Albert Przybyła",
@@ -31,11 +31,11 @@ const oprions: swaggerJSDoc.Options = {
     ],
   },
   apis: [
-    `${__dirname}/../../admin/controllers/**/*.ts`,
-    `${__dirname}/../../public/controllers/**/*.ts`,
-    `${__dirname}/../../admin/dtos/**/*.ts`,
-    `${__dirname}/../../public/dtos/**/*.ts`,
-    `${__dirname}/../../enums/*.ts`,
+    "./src/admin/controllers/**/*.ts",
+    "./src/shared/controllers/**/*.ts",
+    "./src/admin/dtos/**/*.ts",
+    "./src/shared/dtos/**/*.ts",
+    "./src/enums/*.ts",
   ],
 };
 
