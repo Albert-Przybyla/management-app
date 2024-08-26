@@ -15,12 +15,6 @@ const oprions: swaggerJSDoc.Options = {
       },
       version,
     },
-    servers: [
-      {
-        url: "http://localhost:8080/admin",
-        description: "Serwer administratora",
-      },
-    ],
     components: {
       securitySchemes: {
         bearerAuth: {
@@ -36,20 +30,24 @@ const oprions: swaggerJSDoc.Options = {
       },
     ],
   },
-  apis: ["./src/admin/controllers/**/*.ts", "./src/dtos/**/*.ts", "./src/enums/*.ts"],
+  apis: [
+    `${__dirname}/../../admin/controllers/**/*.ts`,
+    `${__dirname}/../../public/controllers/**/*.ts`,
+    `${__dirname}/../../admin/dtos/**/*.ts`,
+    `${__dirname}/../../public/dtos/**/*.ts`,
+    `${__dirname}/../../enums/*.ts`,
+  ],
 };
 
 const swaggerSpec = swaggerJSDoc(oprions);
 
 const swaggerAdminDocs = async (app: Express, port: number) => {
-  app.use("/admin/docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
+  app.use("/docs/admin", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
   app.get("/admin/docs.json", (req: Request, res: Response) => {
     res.setHeader("Content-Type", "application/json");
     res.send(swaggerSpec);
   });
-
-  // logger
 };
 
 export default swaggerAdminDocs;

@@ -2,7 +2,7 @@ import { NextFunction, Request, Response } from "express";
 import { plainToInstance } from "class-transformer";
 import { validateOrReject } from "class-validator";
 import UserController from "../../services/userService";
-import { CreateUserDto } from "../../dtos/user/userCreate.dto";
+import { CreateUserDto } from "../dtos/user/userCreate.dto";
 import OrganizationService from "../../services/organizationService";
 
 /**

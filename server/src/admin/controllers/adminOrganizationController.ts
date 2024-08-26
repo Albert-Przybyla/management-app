@@ -2,7 +2,7 @@ import { NextFunction, Request, Response } from "express";
 import { plainToInstance } from "class-transformer";
 import { validateOrReject } from "class-validator";
 import OrganizationService from "../../services/organizationService";
-import { CreateOrganizationDto } from "../../dtos/organization/organizationCreate.dto";
+import { CreateOrganizationDto } from "../dtos/organization/organizationCreate.dto";
 
 /**
  * @swagger

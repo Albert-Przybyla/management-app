@@ -7,6 +7,7 @@ import swaggerUserDocs from "./config/swaggerUser";
 import { validationErrorHandler } from "./middlewares/validationErrorHandler";
 import userBaseRouter from "./admin/routes/user.router";
 import adminBaseRouter from "./admin/routes/adminRoutes";
+import publicBaseRouter from "./public/routes/publicRoutes";
 
 config({ path: `.env` });
 
@@ -18,6 +19,7 @@ app.use(express.json());
 
 app.use("/admin", adminBaseRouter);
 app.use("/user", userBaseRouter);
+app.use("/", publicBaseRouter);
 
 app.use(validationErrorHandler);
 

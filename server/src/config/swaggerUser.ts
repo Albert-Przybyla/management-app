@@ -15,12 +15,6 @@ const oprions: swaggerJSDoc.Options = {
       },
       version,
     },
-    servers: [
-      {
-        url: "http://localhost:8080/user",
-        description: "Serwer użytkownika",
-      },
-    ],
     components: {
       securitySchemes: {
         bearerAuth: {
@@ -36,20 +30,24 @@ const oprions: swaggerJSDoc.Options = {
       },
     ],
   },
-  apis: ["./src/user/controllers/**/*.ts", "./src/dtos/**/*.ts", "./src/enums/*.ts"],
+  apis: [
+    "./src/user/controllers/**/*.ts",
+    "./src/public/controllers/**/*.ts",
+    "./src/user/dtos/**/*.ts",
+    "./src/public/dtos/**/*.ts",
+    "./src/enums/*.ts",
+  ],
 };
 
 const swaggerSpec = swaggerJSDoc(oprions);
 
 const swaggerUserDocs = async (app: Express, port: number) => {
-  app.use("/user/docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
+  app.use("/docs/user", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
-  app.get("/user/docs.json", (req: Request, res: Response) => {
+  app.get("/docs/user/docs.json", (req: Request, res: Response) => {
     res.setHeader("Content-Type", "application/json");
     res.send(swaggerSpec);
   });
-
-  // logger
 };
 
 export default swaggerUserDocs;
