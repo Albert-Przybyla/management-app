@@ -67,14 +67,8 @@ export class CreateUserDto {
  *           maxLength: 100
  *           example: password123
  *         role:
- *           type: string
+ *           $ref: '#/components/schemas/UserRole'
  *           description: The user's role.
- *           enum:
- *             - admin
- *             - owner
- *             - manager
- *             - user
- *           example: user
  *         organization:
  *           type: string
  *           format: uuid
