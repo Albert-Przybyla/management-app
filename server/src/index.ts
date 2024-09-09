@@ -23,13 +23,24 @@ app.use("/", publicBaseRouter);
 
 app.use(validationErrorHandler);
 
-// Middleware do obsługi innych błędów (opcjonalnie)
 app.use((err: any, req: Request, res: Response, next: NextFunction) => {
   console.error("Final Error Handler: ", err.stack);
+
+  if (err.statusCode) {
+    return res.status(err.statusCode).json({ error: err.message || "An error occurred" });
+  }
+
+  if (err.message === "Invalid Organization ID") {
+    return res.status(400).json({ error: "Invalid Organization ID" });
+  }
+
+  if (err.message === "Organization not found") {
+    return res.status(404).json({ error: "Organization not found" });
+  }
+
   res.status(500).json({ message: "Internal Server Error" });
 });
 
-// Utworzenie serwera HTTP
 const server = http.createServer(app);
 
 connectDB()

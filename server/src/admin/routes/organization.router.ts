@@ -1,11 +1,15 @@
-import { createOrganization } from "../../admin/controllers/adminOrganizationController";
+import {
+  createOrganization,
+  deleteOrganization,
+  getOrganization,
+  getOrganizations,
+} from "../../admin/controllers/adminOrganizationController";
 import { Router } from "express";
 
 const organizationRouter = Router();
 
-organizationRouter.get("/", (req, res) => {
-  res.send("admin user home");
-});
-
-organizationRouter.post("/create", createOrganization);
+organizationRouter.post("", createOrganization);
+organizationRouter.get("", getOrganizations);
+organizationRouter.get("/:organizationId", getOrganization);
+organizationRouter.delete("/:organizationId", deleteOrganization);
 export default organizationRouter;

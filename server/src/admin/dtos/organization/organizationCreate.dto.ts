@@ -1,4 +1,4 @@
-import { IsDate, IsNotEmpty, IsString, Length } from "class-validator";
+import { IsDate, IsDateString, IsNotEmpty, IsString, Length } from "class-validator";
 
 export class CreateOrganizationDto {
   @IsNotEmpty()
@@ -7,7 +7,7 @@ export class CreateOrganizationDto {
   name: string;
 
   @IsNotEmpty()
-  @IsDate()
+  @IsDateString()
   licenseExpiryDate: Date;
 
   @IsString()
@@ -50,7 +50,7 @@ export class CreateOrganizationDto {
  *           type: string
  *           format: date
  *           description: The expiry date of the organization's license.
- *           example: "2025-12-31"
+ *           example: "2025-09-09T08:31:44.307Z"
  *         country:
  *           type: string
  *           description: The country where the organization is located.
