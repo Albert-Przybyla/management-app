@@ -18,39 +18,44 @@ export interface UserDocument extends UserInput, mongoose.Document {
   comparePassword(candidatePassword: string): Promise<boolean>;
 }
 
-const userSchema = new mongoose.Schema({
-  firstName: {
-    type: String,
-    required: true,
-    trim: true,
+const userSchema = new mongoose.Schema(
+  {
+    firstName: {
+      type: String,
+      required: true,
+      trim: true,
+    },
+    lastName: {
+      type: String,
+      required: true,
+      trim: true,
+    },
+    email: {
+      type: String,
+      required: true,
+      unique: true,
+      lowercase: true,
+      trim: true,
+    },
+    password: {
+      type: String,
+      required: true,
+    },
+    role: {
+      type: String,
+      enum: Object.values(UserRole),
+      default: "user",
+    },
+    organization: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Organization",
+      required: true,
+    },
   },
-  lastName: {
-    type: String,
-    required: true,
-    trim: true,
-  },
-  email: {
-    type: String,
-    required: true,
-    unique: true,
-    lowercase: true,
-    trim: true,
-  },
-  password: {
-    type: String,
-    required: true,
-  },
-  role: {
-    type: String,
-    enum: Object.values(UserRole),
-    default: "user",
-  },
-  organization: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: "Organization",
-    required: true,
-  },
-});
+  {
+    timestamps: true,
+  }
+);
 
 userSchema.index({ email: 1 }, { unique: true });
 

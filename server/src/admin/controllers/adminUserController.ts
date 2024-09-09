@@ -14,7 +14,7 @@ import OrganizationService from "../../services/organizationService";
 
 /**
  * @swagger
- * /admin/user/create:
+ * /admin/user:
  *   post:
  *     summary: Register a new user
  *     tags: [Users]

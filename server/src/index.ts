@@ -5,9 +5,9 @@ import connectDB from "./config/db";
 import swaggerAdminDocs from "./config/swaggerAdmin";
 import swaggerUserDocs from "./config/swaggerUser";
 import { validationErrorHandler } from "./middlewares/validationErrorHandler";
-import userBaseRouter from "./admin/routes/user.router";
 import adminBaseRouter from "./admin/routes/adminRoutes";
 import publicBaseRouter from "./shared/routes/publicRoutes";
+import userBaseRouter from "./user/routes/userRoutes";
 
 config({ path: `.env` });
 
@@ -30,15 +30,7 @@ app.use((err: any, req: Request, res: Response, next: NextFunction) => {
     return res.status(err.statusCode).json({ error: err.message || "An error occurred" });
   }
 
-  if (err.message === "Invalid Organization ID") {
-    return res.status(400).json({ error: "Invalid Organization ID" });
-  }
-
-  if (err.message === "Organization not found") {
-    return res.status(404).json({ error: "Organization not found" });
-  }
-
-  res.status(500).json({ message: "Internal Server Error" });
+  res.status(err.status || 500).json({ error: err.message || "An error occurred" });
 });
 
 const server = http.createServer(app);
