@@ -1,5 +1,5 @@
 import { IsEmail, IsEnum, IsNotEmpty, IsString, Length, IsUUID } from "class-validator";
-import { UserRole } from "../../../enums/userRole.enum";
+import { UserRole } from "../../../shared/enums/userRole.enum";
 import { IsObjectId } from "../../../decorators/isObjectId.decorator";
 export class CreateUserDto {
   @IsNotEmpty()

@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 import bcrypt from "bcryptjs";
-import { UserRole } from "../enums/userRole.enum";
+import { UserRole } from "../shared/enums/userRole.enum";
 
 export interface UserInput {
   firstName: string;

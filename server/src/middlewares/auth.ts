@@ -2,7 +2,7 @@
 import { Request, Response, NextFunction } from "express";
 import jwt from "jsonwebtoken";
 import userSchema, { UserDocument } from "../schemas/user.schema";
-import { UserRole } from "../enums/userRole.enum";
+import { UserRole } from "../shared/enums/userRole.enum";
 
 interface JwtPayload {
   id: string;

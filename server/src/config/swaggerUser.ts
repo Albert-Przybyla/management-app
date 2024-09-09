@@ -32,10 +32,10 @@ const oprions: swaggerJSDoc.Options = {
   },
   apis: [
     "./src/user/controllers/**/*.ts",
-    "./src/public/controllers/**/*.ts",
+    "./src/shared/controllers/**/*.ts",
     "./src/user/dtos/**/*.ts",
-    "./src/public/dtos/**/*.ts",
-    "./src/enums/*.ts",
+    "./src/shared/dtos/**/*.ts",
+    "./src/shared/enums/**/*.ts",
   ],
 };
 

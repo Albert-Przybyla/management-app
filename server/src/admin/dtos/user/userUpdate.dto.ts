@@ -1,4 +1,4 @@
-import { UserRole } from "enums/userRole.enum";
+import { UserRole } from "shared/enums/userRole.enum";
 
 export class UpdateUserDto {
   firstName?: string;

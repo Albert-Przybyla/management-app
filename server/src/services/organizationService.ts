@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 import organizationSchema, { OrganizationInput } from "../schemas/organization.schema";
-import { PagedResponseDto } from "dtos/pagedResponse.dto";
+import { PagedResponseDto } from "../shared/dtos/pagedResponse.dto";
 
 const OrganizationService = {
   async createOrganization(OrganizationInput: OrganizationInput): Promise<any> {

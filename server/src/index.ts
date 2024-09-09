@@ -45,8 +45,8 @@ const server = http.createServer(app);
 
 connectDB()
   .then(() => {
-    // swaggerUserDocs(app, PORT);
-    swaggerAdminDocs(app, PORT);
+    swaggerUserDocs(app, PORT);
+    // swaggerAdminDocs(app, PORT);
     server.listen(PORT, () => {
       console.log(`Server running on port ${PORT}`);
     });

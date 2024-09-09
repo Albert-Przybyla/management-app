@@ -35,8 +35,7 @@ const oprions: swaggerJSDoc.Options = {
     "./src/shared/controllers/**/*.ts",
     "./src/admin/dtos/**/*.ts",
     "./src/shared/dtos/**/*.ts",
-    "./src/dtos/**/*.ts",
-    "./src/enums/*.ts",
+    "./src/shared/enums/*.ts",
   ],
 };
 
